@@ -1,24 +1,23 @@
-package com.kafka.client.controller;
+package com.kafka.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-public class WelcomeController {
-	
-	
+public class DemoController {
+
 	@Autowired
 	private RestTemplate restTemplate;
 	
+	
 	@GetMapping("/")
-	public String getWelcome() {
+	public String getDemo() {
 		
-		return "Welcome to the client application";
+		return restTemplate.getForObject("http://Kafka-Client-app/clientApp/", String.class);
 	}
 	
 	
-
+	
 }
